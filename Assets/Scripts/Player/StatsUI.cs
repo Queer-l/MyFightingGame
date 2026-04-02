@@ -18,21 +18,6 @@ public class StatsUI : MonoBehaviour
     private void Update()
     {
         UpdataAllStats();
-        if (Input.GetButtonDown("ToggleStats"))
-        {
-            if (statsOpen)
-            {
-                Time.timeScale = 1;
-                statsCanvas.alpha = 0;
-                statsOpen = false;
-            }
-            else
-            {
-                Time.timeScale = 0;
-                statsCanvas.alpha = 1;
-                statsOpen = true;
-            }
-        }
     }
 
 
