@@ -3157,6 +3157,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf3fac08183ad9b4e9b8f24ae784c3d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &614500619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614500610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd85659d2be99749b2c05f90936c858, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiCanva: {fileID: 1175684877}
+  uiCanvasGroup: {fileID: 1175684874}
+  buttonName: ToggleStats
 --- !u!1 &648273875
 GameObject:
   m_ObjectHideFlags: 0
@@ -5229,6 +5244,16 @@ MonoBehaviour:
   - {fileID: 1144285232}
   boundaryColliders:
   - {fileID: 2130095654}
+--- !u!225 &1175684874 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 6340818570869702209, guid: e62eaf3dc8b32794fa0f726570cc9ab6, type: 3}
+  m_PrefabInstance: {fileID: 1592805895772871752}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &1175684877 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 3978155712259188390, guid: e62eaf3dc8b32794fa0f726570cc9ab6, type: 3}
+  m_PrefabInstance: {fileID: 1592805895772871752}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1224298570
 GameObject:
   m_ObjectHideFlags: 0
@@ -14339,6 +14364,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8388344827166914085, guid: e62eaf3dc8b32794fa0f726570cc9ab6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 614500615}
+    - targetCorrespondingSourceObject: {fileID: 8388344827166914085, guid: e62eaf3dc8b32794fa0f726570cc9ab6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 614500619}
   m_SourcePrefab: {fileID: 100100000, guid: e62eaf3dc8b32794fa0f726570cc9ab6, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
