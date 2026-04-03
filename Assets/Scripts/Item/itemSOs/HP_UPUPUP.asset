@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:yousandi.cn,2023:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d69dac376495884d95844fef478b7ea, type: 3}
+  m_Name: HP_UPUPUP
+  m_EditorClassIdentifier: 
+  itemName: HP_UPUPUP
+  itemDescription: HP_UPUPUP
+  icon: {fileID: 21300000, guid: 946cb216d5d143341bb19cc666a2ce8f, type: 3}
+  moreDescription: HP_UPUPUP
+  id: 1
+  atk_up: 0
+  maxhp_up: 10
+  speed_up: 0

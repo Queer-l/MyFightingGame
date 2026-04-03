@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player_Combat : MonoBehaviour
 {
     public Animator anim;
-    public float cooldown = 1;
+    public float cooldown = 0.5f;
     public float timer ;
     public Transform attackPoint;
     public LayerMask enemyLayer;
@@ -17,6 +17,7 @@ public class Player_Combat : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
+
     }
     public void Attack()//»Ó¿³
     {
