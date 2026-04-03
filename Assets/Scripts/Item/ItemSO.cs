@@ -12,6 +12,9 @@ public class ItemSO : ScriptableObject
     [Header("MoreDescription")]
     [TextArea] public string moreDescription;
 
+    [Header("ID∫≈")]
+    public int id;
+
     [Header("ŒÔ∆∑ Ù–‘")]
     public int atk_up;
     public int maxhp_up;

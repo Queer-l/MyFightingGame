@@ -10,12 +10,7 @@ public class StatsMenuCotroller : MonoBehaviour
     {
         Debug.Log("按钮被点击了！");
         UserInfoData.Instance.saveNewScore(StatsManager.Instance.score);
-
-        if (StatsManager.Instance != null)
-        {
-            StatsManager.Instance.ResetToMainMenu();
-        }
-
+        Time.timeScale = 1;
         // 跳转到StartScene场景（确保场景已在Build Settings中添加）
         SceneManager.LoadScene("StartScene");
 

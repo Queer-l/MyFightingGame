@@ -11,8 +11,7 @@ public class Loot : MonoBehaviour
     public static event Action<ItemSO, int> OnItemLooted;
     public int quantity;
     public bool isGot = false;
-    [Header("IDºÅ")]
-    public int id;
+    
     private void OnValidate()
     {
         if (itemSO == null)
@@ -29,7 +28,7 @@ public class Loot : MonoBehaviour
             isGot = true;
             anim.Play("GetItem");
             OnItemLooted?.Invoke(itemSO, quantity);
-            InventoryData.instance.itemStats[id] = false;
+            InventoryData.instance.itemStats[itemSO.id] = false;
             useItemSO();
             Destroy(gameObject,0.2f);
             
@@ -43,7 +42,9 @@ public class Loot : MonoBehaviour
         }
         else
         {
-            if (InventoryData.instance.itemStats[id]==false)
+            sr.sprite = itemSO.icon;
+            this.name = itemSO.itemName;
+            if (InventoryData.instance.itemStats[itemSO.id] ==false)
             {
                 Destroy(gameObject);
             }
