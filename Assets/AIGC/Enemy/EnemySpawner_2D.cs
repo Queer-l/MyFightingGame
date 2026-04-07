@@ -4,23 +4,31 @@ using UnityEngine;
 public class EnemySpawner_2D : MonoBehaviour
 {
     [Header("=== 2D生成核心设置 ===")]
-    [Tooltip("你的敌人预设（拖入Enemy_Red_0预制体）")]
+    [Tooltip("敌人预设")]
     public GameObject enemyPrefab;
+    public GameObject boss; // Boss预设
 
-    [Tooltip("生成范围的中心点（建议拖入玩家Transform）")]
+    [Tooltip("生成范围的中心点")]
     public Transform spawnCenter;
 
-    [Tooltip("2D圆形生成范围的半径（单位：Unity米）")]
+    [Tooltip("2D圆形生成范围的半径")]
     public float spawnRadius = 8f;
 
     [Tooltip("单次生成的敌人数量")]
     public int spawnCountPerWave = 3;
 
-    [Tooltip("生成间隔（秒），填0则仅开局生成一次")]
+    [Tooltip("生成间隔（秒）")]
     public float spawnInterval = 5f;
 
+    [Header("当前生成波次")]
+    public int currentWave = 0;
+
+    [Header("=== Boss生成设置 ===")]
+    [Tooltip("每多少波生成一次Boss")]
+    public int bossWaveInterval = 10; 
+
     [Header("=== 2D安全生成设置 ===")]
-    [Tooltip("生成点与玩家的最小安全距离（避免刷在玩家脸上）")]
+    [Tooltip("生成点与玩家的最小安全距离")]
     public float minDistanceFromPlayer = 2f;
 
     [Tooltip("生成点Y轴偏移（适配2D场景地面高度，可根据场景调整）")]
@@ -46,6 +54,10 @@ public class EnemySpawner_2D : MonoBehaviour
             Debug.LogError("【EnemySpawner_2D】请绑定敌人预设！");
             enabled = false;
             return;
+        }
+        if (boss == null)
+        {
+            Debug.LogWarning("【EnemySpawner_2D】未绑定Boss预设，将不会生成Boss！");
         }
         if (spawnCenter == null)
         {
@@ -77,11 +89,30 @@ public class EnemySpawner_2D : MonoBehaviour
             if (_spawnTimer >= spawnInterval)
             {
                 _spawnTimer = 0;
-                SpawnEnemyWave(spawnCountPerWave);
+                currentWave++;
+                // 判断是否为Boss波
+                if (currentWave % bossWaveInterval == 0 && boss != null)
+                {
+                    SpawnBoss(); // 生成Boss
+                }
+                else
+                {
+                    SpawnEnemyWave(spawnCountPerWave); // 生成普通小怪
+                }
             }
         }
     }
 
+    /// <summary>
+    /// 生成Boss（单独方法）
+    /// </summary>
+    public void SpawnBoss()
+    {
+        Debug.Log($"第 {currentWave} 波：Boss 生成！");
+        Vector2 spawnPos = GetValid2DSpawnPosition();
+        GameObject spawnedBoss = Instantiate(boss, spawnPos + new Vector2(0, yOffset), Quaternion.identity);
+        spawnedBoss.SetActive(true);
+    }
 
     /// <summary>
     /// 生成一波敌人（核心方法）
@@ -178,7 +209,6 @@ public class EnemySpawner_2D : MonoBehaviour
         Enemy_Hp hp = enemy.GetComponent<Enemy_Hp>();
         if (hp != null)
         {
-            // 请确保你的Enemy_Hp脚本有ResetHp方法，没有的话我可以帮你补
             hp.ResetHp();
         }
 
